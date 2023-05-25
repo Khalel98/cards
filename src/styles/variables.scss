@@ -33,7 +33,6 @@ body{
   background:#FCFFFD;
 }
 
-  
 // Переменные для блока
 $minWidth:320px;
 $maxWidth:1152px;
@@ -66,13 +65,6 @@ $white:#fff;
 		padding: 0 10px;
 	}
 }
-
-
-
-// Переменные для блока
-$fz:100px;
-$color_1:#000;
-$color_2:#fff;
 
 // Шаблоны
 .section__row{
@@ -148,8 +140,7 @@ $color_2:#fff;
 //@include fontz(80px,green);
 
 
- 
- 
+
  .nav-menu {
   padding: 20px 0px;
   &__logoDesktop{
@@ -171,6 +162,9 @@ $color_2:#fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0;
+  position: sticky;
+  z-index: 9999;
 }
 .nav-items {
   display: flex;
@@ -348,6 +342,9 @@ $color_2:#fff;
     display: flex;
     @media screen and (max-width: $md3) {
       justify-content: center;
+    }
+    @media (max-width:$md4) {
+      flex-direction: column;
     }
   }
   .section__header__users {
@@ -847,6 +844,7 @@ $color_2:#fff;
     }
     .quick__link{
       margin-bottom: 20px;
+      cursor: pointer;
     }
   }
 }
