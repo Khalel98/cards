@@ -27,11 +27,17 @@
         </div>
         <!--// Here can be a logo-->
         <ul class="nav-items">
-          <li class="nav-items-link">Главная</li>
-          <li class="nav-items-link">Возможности</li>
-          <li class="nav-items-link">Как получить карту</li>
-          <li class="nav-items-link">FAQ</li>
-          <li class="nav-items-link">Контакты</li>
+          <li class="nav-items-link" @click="navigateTo('#main')">Главная</li>
+          <li class="nav-items-link" @click="navigateTo('#features')">
+            Возможности
+          </li>
+          <li class="nav-items-link" @click="navigateTo('#step')">
+            Как получить карту
+          </li>
+          <li class="nav-items-link" @click="navigateTo('#faq')">FAQ</li>
+          <li class="nav-items-link" @click="navigateTo('#footer')">
+            Контакты
+          </li>
         </ul>
         <div class="login-button">Войти</div>
       </div>
@@ -49,6 +55,13 @@ export default {
   methods: {
     showMenu() {
       this.showMobileMenu = !this.showMobileMenu;
+    },
+    navigateTo(target) {
+      const element = document.querySelector(target);
+      window.scrollTo({
+        behavior: "smooth",
+        top: element.offsetTop,
+      });
     },
   },
 };
