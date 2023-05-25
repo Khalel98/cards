@@ -1,5 +1,5 @@
 <template>
-  <div class="section__header">
+  <div class="section__header" id="main">
     <div class="section__header__content _container">
       <Menu></Menu>
 
@@ -94,7 +94,7 @@
   </div>
 
   <!--Section Features-->
-  <div class="section__features">
+  <div class="section__features" id="features">
     <div class="section__features__content _container">
       <div class="section__row">
         <div class="section__features__text">
@@ -169,6 +169,7 @@
 
   <!--Section Statistics-->
   <div class="section__statistics">
+    <div ref="necessaryBlock" class="necessary-block"></div>
     <div class="section__statistics__content _container">
       <Stat />
     </div>
@@ -225,7 +226,7 @@
     </div>
   </div>
 
-  <div class="section__step">
+  <div class="section__step" id="step">
     <div class="section__step__title">Как получить карту</div>
     <div class="section__step__content _container section__step__desktop">
       <div class="section__step__progress-wrap">
@@ -272,7 +273,7 @@
     </div>
   </div>
 
-  <div class="section__faq">
+  <div class="section__faq" id="faq">
     <div class="section__faq__content _container">
       <div class="section__faq__title">Часто задаваемые вопросы</div>
       <Faq></Faq>
@@ -306,7 +307,7 @@
     </div>
   </div>
 
-  <footer class="section__footer">
+  <footer class="section__footer" id="footer">
     <div class="section__footer__content _container">
       <div class="section__row">
         <div class="section__footer__item">
@@ -373,7 +374,10 @@
         <div class="section__footer__item">
           <div class="section__footer__item__title">Будем на связи</div>
 
-          <a href="" class="section__footer__item__link">
+          <a
+            href="https://support.edus.kz/public/ru/v1"
+            class="section__footer__item__link"
+          >
             <div class="section__footer__item__paragraph__icon">
               <svg
                 width="20"
@@ -453,16 +457,28 @@
         <div class="section__footer__item">
           <div class="section__footer__item__title">Быстрые ссылки</div>
 
-          <div class="section__footer__item__paragraph quick__link">
+          <div
+            class="section__footer__item__paragraph quick__link"
+            @click="navigateTo('#main')"
+          >
             Главная
           </div>
-          <div class="section__footer__item__paragraph quick__link">
+          <div
+            class="section__footer__item__paragraph quick__link"
+            @click="navigateTo('#features')"
+          >
             Возможности
           </div>
-          <div class="section__footer__item__paragraph quick__link">
+          <div
+            class="section__footer__item__paragraph quick__link"
+            @click="navigateTo('#faq')"
+          >
             Часто задаваемые вопросы
           </div>
-          <div class="section__footer__item__paragraph quick__link">
+          <div
+            class="section__footer__item__paragraph quick__link"
+            @click="navigateTo('#step')"
+          >
             Как получить карту
           </div>
         </div>
@@ -489,21 +505,16 @@ export default {
   data() {
     return {
       users__count: 40,
-      scrolled: false,
     };
   },
   methods: {
-    handleScroll() {
-      let obj = document.querySelector("h2");
-      let { top, bottom } = obj.getBoundingClientRect();
-      let height = document.documentElement.clientHeight;
-      this.scrolled = top < height && bottom > 0;
-
-      // this.scrolled = window.scrollY > 100;
+    navigateTo(target) {
+      const element = document.querySelector(target);
+      window.scrollTo({
+        behavior: "smooth",
+        top: element.offsetTop,
+      });
     },
-  },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
   },
 };
 </script>
@@ -513,31 +524,5 @@ export default {
 .animate-on-scroll {
   animation-duration: 1s;
   animation-fill-mode: both;
-}
-
-#app123 div {
-  /*   padding-top: 50vh;
-  border: 10px solid black; */
-  width: 100%;
-  height: 50px;
-  transition: all 1s;
-}
-
-.green {
-  background: green;
-}
-.orange {
-  background: orange;
-}
-.purple {
-  background: purple;
-}
-
-.boom {
-  background-color: red;
-}
-
-h2 {
-  display: inline-block;
 }
 </style>
